@@ -2,3 +2,6 @@ devlog.txt
 
 < 3-4> <14:23>
 working on dir: temporaryDir (untracked).
+
+< 3-5>  <22:07>
+working on dir: temporaryDir
