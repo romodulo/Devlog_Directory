@@ -1,0 +1,18 @@
+I need to create some kind of work-flow system
+
+ideas:
+note-taking system-
+possibly write a software? that is hosted on VPS, and 
+from my phone I can post notes onto a database / 
+or file so that it makes my github commits easier to
+work with if they were only text--based commits.
+
+from phone -- ((write a message)) -> client pushes content to
+a pipeline that ultimately adds an entry to a database / or
+file ->  before-then, .. within the pipeline .. a server is
+asked to receive a request, ..and once accepted.. the server
+processes content and or the data .. to add to a database /
+or file -> from there, server .. continues to run .. and
+process the next set of actions which is to check the git status,
+git add -A, and commit. Ultimately pushing the commit onto the
+remote repo. 

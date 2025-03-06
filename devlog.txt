@@ -5,3 +5,17 @@ working on dir: temporaryDir (untracked).
 
 < 3-5>  <22:07>
 working on dir: temporaryDir
+
+potential-to-do: 
+
+create dashboard with compilation of to-do's and logs
+displayed all in one place.
+
+steps-required in achieving this endeveour:
+
+create vue app
+set up a flask server
+choose a hosting server
+
+< 3-6>  <23:24>
+no coding done; watched a couple of Youtube videos and shorts, kinda;
