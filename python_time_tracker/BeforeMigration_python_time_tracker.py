@@ -50,10 +50,10 @@ def definitionA(fileName_arg, run_CheckA__Switch = False):
     if not objectFilePath:
         with shelve.open(fileName) as timeStamp_Data:
             timeStamp_Data['today'] = today
-            timeStamp_Data['timeStamp_Data'] = today.timestamp()
+            timeStamp_Data['time_StampData'] = today.timestamp()
     else:
         with shelve.open(fileName) as timeStamp_Data:
-            previous_timeStamp_Data = timeStamp_Data['timeStamp_Data']
+            previous_timeStamp_Data = timeStamp_Data['time_StampData']
     if run_CheckA__Switch:
         if previous_timeStamp_Data:
             run_CheckA(previous_timeStamp_Data, today_timeStamp_Data)
@@ -81,10 +81,10 @@ def definitionB(fileName_arg, run_CheckA__Switch = False, close__Switch = False)
     if not objectFilePath:
         with shelve.open(fileName) as timeStamp_Data:
             timeStamp_Data['today'] = today
-            timeStamp_Data['timeStamp_Data'] = today.timestamp()
+            timeStamp_Data['time_StampData'] = today.timestamp()
     else:
         with shelve.open(fileName) as timeStamp_Data:
-            previous_timeStamp_Data = timeStamp_Data['timeStamp_Data']
+            previous_timeStamp_Data = timeStamp_Data['time_StampData']
     if run_CheckA__Switch:
         if previous_timeStamp_Data:
             run_CheckA(previous_timeStamp_Data, today_timeStamp_Data)
@@ -100,6 +100,8 @@ def printNameFunc(fileName, printName):
 
 def open_Data(fileName, printName = False):
     printNameFunc(fileName, printName)
+    if printName:
+        print(fileName)
     with shelve.open(fileName) as openFile:
         time__delta = openFile['time--delta']
         closing__time = openFile['close--time']
@@ -108,7 +110,7 @@ def open_Data(fileName, printName = False):
 def open_Data_timeStamp(fileName, printName = False):
     printNameFunc(fileName, printName)
     with shelve.open(fileName) as openFile:
-        timeStamp_Data = openFile['timeStamp_Data']
+        timeStamp_Data = openFile['time_StampData']
     return timeStamp_Data
 
 #i need to migrate-data within shelve files.
@@ -122,41 +124,33 @@ def open_shelve_migrate(fileName):
 # After migration, I need to remove old data: 'time_StampData
 #
 
-def open_shelf_generic(varA, varB, fileName, test=False):
-    with shelve.open(fileName) as openFile:
-        openFile[varA] = varB
-        open_variable = openFile[varA]
-    if test:
-        print("openFile:,", open_variable)
-#
-#
-
-def genericFunc():
-    ...
-
-
 if __name__ == '__main__':
-    definitionA("time_StampData", run_CheckA__Switch = True)
+    # pause-only once
+    # definitionA("time_StampData", run_CheckA__Switch = True)
+    #
     # do not uncomment:
     # definitionB("2nd_break", run_CheckA__Switch = True, close__Switch = True)
     # do not uncomment:
     # definitionB("walking_timer_1", run_CheckA__Switch = True, close__Switch = True)
-    definitionB("arb_timer", run_CheckA__Switch = True)
-    time__delta, closing__time = open_Data("2nd_break", printName = True)
-    print(time__delta)
-    print(n := closing__time, "\n")
-    timeStamp_Data = open_Data_timeStamp("2nd_break", printName=True)
-    print(t := timeStamp_Data)
-    print(n-t)
-    open_shelf_generic('time--delta', closing__time - timeStamp_Data, "2nd_break")
-
-    
+    # pause only once
+    # definitionB("arb_timer", run_CheckA__Switch = True)
+    # time__delta, closing__time = open_Data("2nd_break", printName = True)
+    # print(time__delta)
+    # print(n := closing__time, "\n")
+    # timeStamp_Data = open_Data_timeStamp("2nd_break", printName=True)
+    # print(t := timeStamp_Data)
+    # print(n-t)
+    #
     #
     # I was able to successfully migrate: time_StampData, 2nd_break, arb_timer
     # and break_timer
     #
+    # open_shelve_migrate('time_StampData')
+    # open_shelve_migrate('2nd_break')
+    # open_shelve_migrate('arb_timer')
+    # open_shelve_migrate('break_timer')
     #
-    # Migrate-successful: 21:45
+    #File migrated. 
     #
     # I made an error with shelve data  # timeStamp_Data or 
     # time_StampData   #crisis-averted
