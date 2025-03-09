@@ -1,0 +1,16 @@
+{
+  "cities-and_states": {
+    "timesquare": 1,
+    "newYork": 0,
+    "california": 3,
+    "sanFrancisco": 4,
+    "losAngeles": 2,
+    "sanDiego": 5,
+    "washington": 6,
+    "seattle": 7
+  },
+  "today": "2025-03-09 16:15:50.439762",
+  "checkpoint-00": "1741501174.286988",
+  "timeStamp_Data": "1741500950.439762",
+  "Checkpoint--counter": "0"
+}

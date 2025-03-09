@@ -2,6 +2,7 @@ from datetime import datetime
 import shelve
 import os
 from decimal import Decimal, ROUND_DOWN
+import json
 
 # print(dir(datetime))
 # print(datetime.today())
@@ -165,6 +166,72 @@ def open_shelf_generic(varA, varB, fileName, test=False):
 def genericFunc():
     ...
 
+def placeholder_data():
+    return {
+        "timesquare": 1, "newYork": 0, "california": 3, "sanFrancisco": 4,
+        "losAngeles": 2, "sanDiego": 5, "washington": 6, "seattle": 7
+    }
+
+def jotDownTime_Now(fileName="testShelveFile_defaultFile__deleteLater_Anytime", data=None, add_on_Complete=False):
+    # redundant-use:
+    today = datetime.today()
+    timestamp = today.timestamp() 
+    #
+    with shelve.open(fileName) as openFile:
+        allKeys = list(openFile.keys())
+        # print-keys:
+        print("allKeys:, ", allKeys)
+        #
+        if 'Checkpoint--counter' not in allKeys:
+            openFile['Checkpoint--counter'] = 0
+            currentCount = openFile['Checkpoint--counter']
+        else: 
+            currentCount = openFile['Checkpoint--counter']
+        if add_on_Complete:
+            currentCount += 1
+        if currentCount < 10:
+            openFile[f'checkpoint-0{currentCount}']= timestamp
+        else:
+            openFile[f'checkpoint-{currentCount}']= timestamp
+
+    with shelve.open(fileName) as openFile:
+        # second--print:
+        allKeys = list(openFile.keys())
+        # print-keys:
+        print("allKeys:, ", allKeys)
+        #
+    
+    # to-do:
+    # 
+    # check if json file exists, if not, create one.
+    # otherwise, an error occurs
+
+    ###
+    #continue
+    ###
+    arbritra_Dict = {}
+    with shelve.open(fileName) as openFile:
+        for ea in allKeys:
+            arbritra_Dict[ea] = str(openFile[ea])
+    arbritra_keys = arbritra_Dict.keys()
+
+    with open(f"{fileName}.json", "w") as jsonFile:
+        processData = {}
+        processData['cities-and_states'] = data
+        for e in arbritra_keys:
+            processData[e] = arbritra_Dict[e]
+        json.dump(processData, jsonFile, indent=2)
+    
+    # print-entry for today, timeStamp_data, and checkpoint-00
+    entries = ['today', 'timeStamp_Data', 'checkpoint-00']
+    for i in entries:
+        if not i == 'today':
+            printThis = datetime.fromtimestamp(float(processData[i]))
+        else:
+            printThis = processData[i]
+        print((i+":").ljust(16), str(processData[i]).rjust(34), str(printThis).rjust(30))
+
+
 
 if __name__ == '__main__':
     definitionA("time_StampData", run_CheckA__Switch=True)
@@ -224,9 +291,25 @@ if __name__ == '__main__':
     print("")
     definitionB("dailyClock_3_9", run_CheckA__Switch=True, close__Switch=False)
     definitionB("./notWorking/notWorkingTimer01", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    # time__delta, closing__time = open_Data("./notWorking/notWorkingTimer01", printName = True)
+    # print(time__delta)
+    # print(n := closing__time, "\n")
+    timeStamp_Data = open_Data_timeStamp("./notWorking/notWorkingTimer01", printName=True)
+    print(t := timeStamp_Data)
 
+    # only-uncomment if true
+    # print("")
+    # jotDownTime_Now(
+    #     "./notWorking/copy_notWorkingTimer01",
+    #     placeholder_data(),
+    #     add_on_Complete = False)
 
-
+    definitionB("./washingMachine/washingMachineBreakTimer01", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    print("")
+    jotDownTime_Now(
+        "./washingMachine/washingMachineBreakTimer01",
+        placeholder_data(),
+        add_on_Complete = False)
 
     #
     # I was able to successfully migrate: time_StampData, 2nd_break, arb_timer

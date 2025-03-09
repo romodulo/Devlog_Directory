@@ -19,3 +19,6 @@ choose a hosting server
 
 < 3-6>  <23:24>
 no coding done; watched a couple of Youtube videos and shorts, kinda;
+
+< 3-9>  <16:22>
+Check-point of < 3-9>  <16:23>:  python_time_tracker.py is stable; add a devblog file-n-entry
