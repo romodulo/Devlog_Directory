@@ -173,6 +173,7 @@ def placeholder_data():
     }
 
 def jotDownTime_Now(fileName="testShelveFile_defaultFile__deleteLater_Anytime", data=None, add_on_Complete=False):
+    print("fileName:", fileName)
     # redundant-use:
     today = datetime.today()
     timestamp = today.timestamp() 
@@ -187,12 +188,19 @@ def jotDownTime_Now(fileName="testShelveFile_defaultFile__deleteLater_Anytime", 
             currentCount = openFile['Checkpoint--counter']
         else: 
             currentCount = openFile['Checkpoint--counter']
-        if add_on_Complete:
-            currentCount += 1
+            if add_on_Complete:
+                currentCount += 1
         if currentCount < 10:
             openFile[f'checkpoint-0{currentCount}']= timestamp
         else:
             openFile[f'checkpoint-{currentCount}']= timestamp
+        if add_on_Complete:
+            currentCount +=1
+            if currentCount < 10:
+                openFile[f'checkpoint-0{currentCount}']= timestamp
+            else:
+                openFile[f'checkpoint-{currentCount}']= timestamp
+        openFile['Checkpoint--counter'] = currentCount
 
     with shelve.open(fileName) as openFile:
         # second--print:
@@ -223,13 +231,20 @@ def jotDownTime_Now(fileName="testShelveFile_defaultFile__deleteLater_Anytime", 
         json.dump(processData, jsonFile, indent=2)
     
     # print-entry for today, timeStamp_data, and checkpoint-00
-    entries = ['today', 'timeStamp_Data', 'checkpoint-00']
+    entries = arbritra_keys
+    arbritra_List = []
     for i in entries:
         if not i == 'today':
             printThis = datetime.fromtimestamp(float(processData[i]))
         else:
             printThis = processData[i]
-        print((i+":").ljust(16), str(processData[i]).rjust(34), str(printThis).rjust(30))
+        arbritra_String = (i+":").ljust(22), str(processData[i]).rjust(34), str(printThis).rjust(30)
+        arbritra_List.append(arbritra_String)
+    arbritra_List.sort()
+    for i in arbritra_List:
+        print(i)
+    
+
 
 
 
@@ -308,6 +323,13 @@ if __name__ == '__main__':
     print("")
     jotDownTime_Now(
         "./washingMachine/washingMachineBreakTimer01",
+        placeholder_data(),
+        add_on_Complete = False)
+
+    definitionB("./3-9/timerRightBeforeSleep", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    print("")
+    jotDownTime_Now(
+        "./3-9/timerRightBeforeSleep",
         placeholder_data(),
         add_on_Complete = False)
 
