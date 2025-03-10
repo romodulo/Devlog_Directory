@@ -105,7 +105,7 @@ def definitionB(fileName_arg, run_CheckA__Switch = False, final_outcome=False, c
             # "" openedFile['time--delta'] ""
         except UnboundLocalError:
             print("UnboundLocalError")
-    print(f"filename: {fileName_arg}")
+    # print(f"filename: {fileName_arg}")
     today = datetime.today()
     today_timeStamp_Data = today.timestamp() 
     fileName = fileName_arg
@@ -326,10 +326,27 @@ if __name__ == '__main__':
         placeholder_data(),
         add_on_Complete = False)
 
-    definitionB("./3-9/timerRightBeforeSleep", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
-    print("")
+    definitionB("./3-09/timerRightBeforeSleep", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
     jotDownTime_Now(
-        "./3-9/timerRightBeforeSleep",
+        "./3-09/timerRightBeforeSleep",
+        placeholder_data(),
+        add_on_Complete = False)
+
+    definitionB("./3-10/wokeUp-Today", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    jotDownTime_Now(
+        "./3-10/wokeUp-Today",
+        placeholder_data(),
+        add_on_Complete = False)
+
+    definitionB("./3-10/2ndTimer-ContemplatingOfCleaningMyRoom", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    jotDownTime_Now(
+        "./3-10/2ndTimer-ContemplatingOfCleaningMyRoom",
+        placeholder_data(),
+        add_on_Complete = False)
+
+    definitionB("./3-10/Go-ToMyRoom", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    jotDownTime_Now(
+        "./3-10/Go-ToMyRoom",
         placeholder_data(),
         add_on_Complete = False)
 
