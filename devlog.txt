@@ -25,3 +25,6 @@ Check-point of < 3-9>  <16:23>:  python_time_tracker.py is stable; add a devblog
 
 < 3-12>  <23:57>
 coding later
+
+< 3-13>  <23:53>
+will definitely code later or tomorrow
