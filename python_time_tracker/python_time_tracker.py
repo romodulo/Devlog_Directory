@@ -350,6 +350,13 @@ if __name__ == '__main__':
         placeholder_data(),
         add_on_Complete = False)
 
+    definitionB("./3-15/Take-a-break", run_CheckA__Switch=True, final_outcome=True, close__Switch=False)
+    jotDownTime_Now(
+        "./3-15/Take-a-break",
+        placeholder_data(),
+        add_on_Complete = False)
+
+
     #
     # I was able to successfully migrate: time_StampData, 2nd_break, arb_timer
     # and break_timer, newly-migrated: walking_timer_1
