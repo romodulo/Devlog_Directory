@@ -36,3 +36,5 @@ First commit of < 4-7>  <23:58>  :  i am still sick today: i haven't coded today
 First commit of < 4-8>  <22:20>  :  still sick today; no coding done today
 
 First commit of < 4-9> <23:49>: i am still sick; no coding for today;
+
+Checkpoint < 4-30>  <23:03>: working on an-untrackd-directory--(vue--application)
